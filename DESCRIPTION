@@ -1,18 +1,19 @@
 Package: ttservice
 Type: Package
 Title: A Service for Tidy Transcriptomics Software Suite
-Version: 0.1.2
+Version: 0.2.2
 Authors@R: c(person("Stefano", "Mangiola", email = "mangiolastefano@gmail.com",
                   role = c("aut", "cre")) )
-Description: It provides generic methods that are used by more than one package, avoiding conflicts. This package will be imported by 'tidySingleCellExperiment' and 'tidyseurat'. The implemented method is join_features(). 
+Description: It provides generic methods that are used by more than one package, avoiding conflicts. This package will be imported by 'tidySingleCellExperiment' and 'tidyseurat'. 
 License: GPL-3
 Depends: R (>= 4.0.0)
-Imports: methods
+Imports: dplyr
+Suggests: methods
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 NeedsCompilation: no
-Packaged: 2021-10-12 07:00:31 UTC; mangiola.s
+Packaged: 2022-06-24 00:55:09 UTC; mangiola.s
 Author: Stefano Mangiola [aut, cre]
 Maintainer: Stefano Mangiola <mangiolastefano@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-10-12 12:30:02 UTC
+Date/Publication: 2022-06-24 06:50:02 UTC
