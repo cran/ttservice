@@ -1,5 +1,6 @@
-dadeeec1ccf15e12f977f3fe4308abd0 *DESCRIPTION
-b3341911fd9f5ab864a8d3771a7e1331 *NAMESPACE
-101f752a42420559dcc47bb1ed079b10 *R/methods.R
+13aa59b331cbcd9e7fe8df76f74d1fb4 *DESCRIPTION
+07ab79f88b4462be92ba1eda61d67a89 *NAMESPACE
+9b171d9c94c87508e8c94d021f2b396d *R/methods.R
+56aa8ae70a2aee02584fa70a536c0f48 *man/aggregate_cells.Rd
 7e61f6bf6401562eaab68495e2916efa *man/dplyr-methods.Rd
-ff7e599055c54daa8e6835c7802984d6 *man/join_features.Rd
+76dc45bf2c0d5d0533f95e6d2dcae379 *man/join_features.Rd
