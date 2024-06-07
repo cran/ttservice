@@ -222,7 +222,7 @@ bind_cols.list <-  function(..., .id = NULL)
 #' @rdname plot_ly
 #' @inherit plotly::plot_ly
 #' @importFrom plotly plot_ly
-#' 
+#'
 #' @export
 plot_ly <- function(data=data.frame(), ..., type=NULL, name=NULL,
                     color=NULL, colors=NULL, alpha=NULL,
@@ -237,9 +237,9 @@ plot_ly <- function(data=data.frame(), ..., type=NULL, name=NULL,
 }
 
 #' @importFrom plotly plot_ly
-#' 
+#'
 #' @export
-plot_ly.default <- function(data=data.frame(), 
+plot_ly.default <- function(data=data.frame(),
                             ..., type=NULL, name=NULL,
                             color=NULL, colors=NULL, alpha=NULL,
                             stroke=NULL, strokes=NULL, alpha_stroke=1,
@@ -249,9 +249,9 @@ plot_ly.default <- function(data=data.frame(),
                             linetype=NULL, linetypes=NULL,
                             split=NULL, frame=NULL,
                             width=NULL, height=NULL, source="A") {
-  
+
   class(data) <- class(data)[!class(data) %in% "tbl_df"]
-  
+
   plotly::plot_ly(data, ...,
                   type=type, name=name,
                   color=color, colors=colors, alpha=alpha,
@@ -262,4 +262,35 @@ plot_ly.default <- function(data=data.frame(),
                   linetype=linetype, linetypes=linetypes,
                   split=split, frame=frame,
                   width=width, height=height, source=source)
+}
+
+#' Add class to abject
+#'
+#' @keywords internal
+#' @export
+#'
+#' @param var A tibble
+#' @param name A character name of the attribute
+#'
+#' @return A tibble with an additional attribute
+add_class = function(var, name) {
+
+  if(!name %in% class(var)) class(var) <- c(name, class(var))
+
+  var
+}
+
+#' Remove class to abject
+#'
+#' @keywords internal
+#' @noRd
+#'
+#'
+#' @param var A tibble
+#' @param name A character name of the class
+#'
+#' @return A tibble with an additional attribute
+drop_class = function(var, name) {
+  class(var) <- class(var)[!class(var)%in%name]
+  var
 }
