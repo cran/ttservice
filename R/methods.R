@@ -71,6 +71,39 @@ setGeneric("aggregate_cells", function(.data,
                                       ...)
   standardGeneric("aggregate_cells"))
 
+#' Append samples
+#'
+#' @description Append multiple samples or datasets together, combining their data while preserving sample-specific information.
+#'
+#' @docType methods
+#'
+#' @name append_samples
+#' @rdname append_samples
+#'
+#' @param x A genomic data container to combine with others
+#' @param ... Additional genomic data containers to combine
+#'
+#'   Each argument should be a genomic data object such as a SummarizedExperiment,
+#'   SingleCellExperiment, SpatialExperiment, or Seurat object (provided that
+#'   the appropriate method extensions are available). You may also provide a list
+#'   of such objects.
+#'
+#'   When row-binding, features (e.g., genes) are matched by name, and any missing
+#'   features will be filled with NA or zero as appropriate for the container.
+#'
+#'   When column-binding, samples (e.g., cells) are matched by position, so all objects
+#'   must have the same number of features. To match by value, not position, see mutate-joins.
+#'
+#' @return A combined genomic object
+#'
+#' @examples
+#'
+#' print("combined_data <- append_samples(sample1, sample2, .id = \"sample\")")
+#'
+#' @export
+#'
+append_samples <- function(x, ...) UseMethod("append_samples")
+
 
 #' Efficiently bind multiple data frames by row and column
 #'
@@ -222,7 +255,7 @@ bind_cols.list <-  function(..., .id = NULL)
 #' @rdname plot_ly
 #' @inherit plotly::plot_ly
 #' @importFrom plotly plot_ly
-#'
+#' 
 #' @export
 plot_ly <- function(data=data.frame(), ..., type=NULL, name=NULL,
                     color=NULL, colors=NULL, alpha=NULL,
@@ -237,9 +270,9 @@ plot_ly <- function(data=data.frame(), ..., type=NULL, name=NULL,
 }
 
 #' @importFrom plotly plot_ly
-#'
+#' 
 #' @export
-plot_ly.default <- function(data=data.frame(),
+plot_ly.default <- function(data=data.frame(), 
                             ..., type=NULL, name=NULL,
                             color=NULL, colors=NULL, alpha=NULL,
                             stroke=NULL, strokes=NULL, alpha_stroke=1,
@@ -249,9 +282,9 @@ plot_ly.default <- function(data=data.frame(),
                             linetype=NULL, linetypes=NULL,
                             split=NULL, frame=NULL,
                             width=NULL, height=NULL, source="A") {
-
+  
   class(data) <- class(data)[!class(data) %in% "tbl_df"]
-
+  
   plotly::plot_ly(data, ...,
                   type=type, name=name,
                   color=color, colors=colors, alpha=alpha,
@@ -274,9 +307,9 @@ plot_ly.default <- function(data=data.frame(),
 #'
 #' @return A tibble with an additional attribute
 add_class = function(var, name) {
-
+  
   if(!name %in% class(var)) class(var) <- c(name, class(var))
-
+  
   var
 }
 
